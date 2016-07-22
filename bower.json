@@ -1,13 +1,8 @@
 {
   "name": "purescript-uri",
   "version": "0.3.0",
-  "homepage": "https://github.com/slamdata/purescript-uri",
   "description": "A type-safe parser, printer, and ADT for URLs and URIs. ",
   "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/slamdata/purescript-uri.git"
-  },
   "ignore": [
     "**/.*",
     "bower_components",
