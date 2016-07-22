@@ -8,7 +8,7 @@ import Prelude
 import Control.Apply ((*>))
 
 import Data.Int (fromNumber)
-import Data.List (toUnfoldable)
+import Data.Array (fromFoldable)
 import Data.Maybe (Maybe(..), maybe)
 import Data.String as S
 import Data.Tuple (Tuple(..))
@@ -28,7 +28,7 @@ parseAuthority = do
   ui ← optionMaybe parseUserInfo
   hosts ← flip sepBy (string ",") $
     Tuple <$> parseHost <*> optionMaybe (string ":" *> parsePort)
-  pure $ Authority ui (toUnfoldable hosts)
+  pure $ Authority ui (fromFoldable hosts)
 
 parsePort ∷ Parser Port
 parsePort = do

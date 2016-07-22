@@ -74,12 +74,6 @@ parseSegmentNonZeroNoColon =
     (parseUnreserved <|> parsePCTEncoded <|> parseSubDelims <|> string "@")
 
 parseURIPathAbs ∷ Parser URIPathAbs
--- parseURIPathAbs = Parser \{ str: str, pos: i } fc sc →
---   case sandbox rootDir =<< parseAbsFile (Str.drop i str) of
---     Just file → sc (Right $ rootDir </> file) { str: str, pos: Str.length str }
---     Nothing → case sandbox rootDir =<< parseAbsDir (Str.drop i str) of
---       Just dir → sc (Left $ rootDir </> dir) { str: str, pos: Str.length str }
---       Nothing → fc i (ParseError $ "Expected a valid path")
 parseURIPathAbs = Parser \{ str: str, pos: i } →
   case sandbox rootDir =<< parseAbsFile (Str.drop i str) of
     Just file → Right { result: (Right $ rootDir </> file), suffix: { str: str, pos: Str.length str } }
@@ -88,12 +82,6 @@ parseURIPathAbs = Parser \{ str: str, pos: i } →
       Nothing → Left { pos: i, error: ParseError $ "Expected a valid path" }
 
 parseURIPathRel ∷ Parser URIPathRel
--- parseURIPathRel = Parser \{ str: str, pos: i } fc sc →
---   case parseRelFile (Str.drop i str) of
---     Just file → sc (Right file) { str: str, pos: Str.length str }
---     Nothing → case parseRelDir (Str.drop i str) of
---       Just dir → sc (Left dir) { str: str, pos: Str.length str }
---       Nothing → fc i (ParseError $ "Expected a valid path")
 parseURIPathRel = Parser \{ str: str, pos: i } →
   case parseRelFile (Str.drop i str) of
     Just file → Right { result: Right file, suffix: { str: str, pos: Str.length str } }

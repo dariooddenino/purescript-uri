@@ -1,5 +1,6 @@
 {
   "name": "purescript-uri",
+  "version": "0.3.0",
   "homepage": "https://github.com/slamdata/purescript-uri",
   "description": "A type-safe parser, printer, and ADT for URLs and URIs. ",
   "license": "Apache-2.0",
