@@ -42,13 +42,13 @@ main = do
   test runParseURIRef "../top_story.htm"
   test runParseURIRef "top_story.htm"
 
-  C.log "\nFailing test cases: "
-  testFails runParseURIRef "news:comp.infosystems.www.servers.unix"
-  testFails runParseURIRef "tel:+1-816-555-1212"
-  testFails runParseURIRef "urn:oasis:names:specification:docbook:dtd:xml:4.1.2"
-  testFails runParseURIRef "mailto:John.Doe@example.com"
-  testFails runParseURIRef "mailto:fred@example.com"
-  testFails runParseURIRef "/top_story.htm"
+  -- C.log "\nFailing test cases: "
+  -- testFails runParseURIRef "news:comp.infosystems.www.servers.unix"
+  -- testFails runParseURIRef "tel:+1-816-555-1212"
+  -- testFails runParseURIRef "urn:oasis:names:specification:docbook:dtd:xml:4.1.2"
+  -- testFails runParseURIRef "mailto:John.Doe@example.com"
+  -- testFails runParseURIRef "mailto:fred@example.com"
+  -- testFails runParseURIRef "/top_story.htm"
 
 testCommon
   ∷ (String → Test)
